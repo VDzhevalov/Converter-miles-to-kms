@@ -1,5 +1,6 @@
 package app;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,10 +20,17 @@ public class Main {
 
         do {
             System.out.println(title);
-            type = scanner.nextByte();
+
+            try {
+                type = scanner.nextByte();
+            } catch (InputMismatchException e) {
+                type = 0;
+                scanner.nextLine();
+            }
             if (type < 1 || type > 2) {
                 System.out.println("Invalid input, please try again");
             }
+
         } while (type < 1 || type > 2);
 
         switch (type) {
