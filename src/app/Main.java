@@ -4,19 +4,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+    private static double distance;
+    private static double convertedDistance;
 
     public static void main(String[] args) {
         System.out.println("App for converting miles to kilometers");
+        String title = "Choose the type of conversion: \n1) Miles to Kilometers \n2) Kilometers to Miles";
 
-         String title;
-         Scanner scanner;
-
-        scanner = new Scanner(System.in);
-
-        title = "Choose the type of conversion: \n1) Miles to Kilometers \n2) Kilometers to Miles";
         byte type;
-        double distance;
-        double convertedDistance;
 
         do {
             System.out.println(title);
@@ -35,20 +31,28 @@ public class Main {
 
         switch (type) {
             case 1: {
-                System.out.print("Enter number of miles: ");
-                distance = scanner.nextDouble();
-                convertedDistance = distance * 1.609344;
-                System.out.println(distance + " miles is: " + convertedDistance + " kilometers");
+                convertMilesToKilometers();
                 break;
             }
             case 2: {
-                System.out.print( "Enter number of kilometers: ");
-                distance = scanner.nextDouble();
-                convertedDistance = distance / 1.609344;
-                System.out.println(distance + " kilometers is: " + convertedDistance + " miles");
+                convertKilometersToMiles();
                 break;
             }
         };
         scanner.close();
+    }
+
+    private static void convertMilesToKilometers() {
+        System.out.print("Enter number of miles: ");
+        distance = scanner.nextDouble();
+        convertedDistance = distance * 1.609344;
+        System.out.printf("%.2f miles is: %.2f kilometers", distance, convertedDistance);
+    }
+
+    private static void convertKilometersToMiles() {
+        System.out.print( "Enter number of kilometers: ");
+        distance = scanner.nextDouble();
+        convertedDistance = distance / 1.609344;
+        System.out.printf("%.2f kilometers is: %.2f miles", distance, convertedDistance);
     }
 }
