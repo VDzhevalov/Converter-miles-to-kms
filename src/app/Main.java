@@ -13,15 +13,13 @@ public class Main {
         double distance;
 
         switch (selectConvertOptionMenu(title)) {
-            case 1: {
+            case 1 -> {
                 distance = inputSelectedDistance("Enter number of miles: ");
                 System.out.printf("%.2f miles is: %.2f kilometers", distance, convertMilesToKilometers(distance));
-                break;
             }
-            case 2: {
+            case 2 -> {
                 distance = inputSelectedDistance("Enter number of kilometers: ");
                 System.out.printf("%.2f kilometers is: %.2f miles", distance, convertKilometersToMiles(distance));
-                break;
             }
         }
         SCANNER.close();
